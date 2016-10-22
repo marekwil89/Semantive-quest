@@ -8,6 +8,51 @@
 </head>
 <body ng-app="app" ng-controller="appCtrl">
 
+  <header>
+    <section>
+      <form novalidate>
+        <h1>New rectangle</h1>
+
+        <fieldset>
+          <label>Number:</label>
+          <input type="text" ng-model="rectangle.number" />
+        </fieldset>
+        <fieldset>
+          <label>Color:</label>
+          <select ng-model="rectangle.color">
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label>Size:</label>
+          <input type="radio" ng-model="rectangle.size" value="25" />S
+          <input type="radio" ng-model="rectangle.size" value="50" />M
+          <input type="radio" ng-model="rectangle.size" value="75" />L
+          <input type="radio" ng-model="rectangle.size" value="100" />XL 
+        </fieldset>
+
+
+        <input type="submit" ng-click="save(rectangle)" value="Save">
+
+      </form>     
+    </section>
+
+  </header>
+
+  <main>
+    <h2 ng-if="rectangles == 0">Your box is empty</h2>
+    <article ng-repeat="rectangle in rectangles">
+      <div ng-style="rectangle.visual"></div>
+      <h3>Number: {{rectangle.number}}</h3>
+      <p>Size:  {{rectangle.size}}px</p>
+      <p>Color: {{rectangle.color}}</p>
+    </article>
+  </main>
+
+
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
