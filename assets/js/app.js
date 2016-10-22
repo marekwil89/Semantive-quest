@@ -4,7 +4,10 @@ angular.module('app', [])
   $scope.rectangles = rectangleService.ractangleList;
   $scope.rectangle = rectangleService.model;
 
-
+  $scope.$watch('rectangle', function(data){
+    $scope.visualRectangle = rectangleService.visualRectangle(data)     
+  }, true);
+  
   $scope.save = function(data){
     rectangleService.addRectangle(data);
     $scope.rectangles = rectangleService.getRectangles();
@@ -19,6 +22,14 @@ angular.module('app', [])
     color: 'yellow',
     size: 25       
   };
+
+  this.visualRectangle = function(data){
+    return {
+      'background-color': data.color,
+      'width': data.size + 'px',
+      'height': data.size + 'px'      
+    }
+  }
 
   this.addRectangle = function(data){
     this.ractangleList.push({

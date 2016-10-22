@@ -33,13 +33,13 @@
           <input type="radio" ng-model="rectangle.size" value="75" />L
           <input type="radio" ng-model="rectangle.size" value="100" />XL 
         </fieldset>
-
-
         <input type="submit" ng-click="save(rectangle)" value="Save">
-
       </form>     
     </section>
-
+    <aside>
+      <h2>Your rectangle: </h2>
+      <div ng-style="visualRectangle"></div>
+    </aside> 
   </header>
 
   <main>
